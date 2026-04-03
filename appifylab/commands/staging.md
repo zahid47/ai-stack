@@ -42,18 +42,22 @@ $ARGUMENTS — optional school_id number (defaults to 273)
    - If **either repo is on `main`**: ask the user if they want to create a new branch. If yes, ask for a branch name, then create and checkout that branch in **both** repos.
    - If the **branch names differ**: tell the user the branch names don't match and ask if they want to create a new branch in both repos. If yes, ask for a branch name, then create and checkout that branch in **both** repos.
    - If both repos are on the **same non-main branch**: proceed.
-5. For **each repo**, push the branch to origin if not already pushed (`git push -u origin <branch>`).
-6. For **each repo**, check if a PR already exists for this branch → `gh pr list --head <branch> --state open`.
-7. **If a PR already exists**:
-   - In ezycourse-api: make sure label `STAGING-<school_id>` is on it → `gh pr edit <number> --add-label "STAGING-<school_id>"`
-   - In courseporium-next: make sure label `STAGING` is on it → `gh pr edit <number> --add-label "STAGING"`
-8. **If no PR exists**:
+5. **Check if already in staging** — for **each repo**, check if a PR with the staging label already exists for this branch → `gh pr list --head <branch> --state open`.
+6. **If already in staging** (PR exists with staging label):
+   - For **each repo**, check for uncommitted changes (`git status --porcelain`).
+   - If there are uncommitted changes: stage all changes (`git add -A`), create a commit with a short descriptive message summarizing the changes, and push to origin.
+   - If there are no uncommitted changes but unpushed commits: just push to origin.
+   - If fully up to date: report "already up to date".
+   - Re-confirm the staging label is still on the PR (in case it was removed) and re-add if needed.
+   - Print the existing PR URLs and done.
+7. **If NOT in staging** (no PR exists):
+   - For **each repo**, push the branch to origin if not already pushed (`git push -u origin <branch>`).
    - In ezycourse-api: `gh pr create --base main --head <branch> --title "<branch>" --body "" --label "STAGING-<school_id>"`
    - In courseporium-next: `gh pr create --base main --head <branch> --title "<branch>" --body "" --label "STAGING"`
-9. Print both PR URLs at the end.
+   - Print both PR URLs at the end.
 
 ## Important
 
-- Do NOT ask for confirmation on PR creation — just do it.
-- Only ask the user questions when branches need to be created (on main or mismatched branches).
+- Do NOT ask for confirmation on PR creation, commits, or pushes — just do it.
+- Only ask the user questions when branches need to be created (on main or mismatched branches) or for school_id selection.
 - Always confirm the push succeeded before creating the PR.
