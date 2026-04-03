@@ -4,6 +4,12 @@ Run a comprehensive production-readiness check before submitting a PR for senior
 
 **CRITICAL SCOPE RULE:** All checks must ONLY report issues **introduced or caused by this branch**. Pre-existing issues (bugs, security vulnerabilities, performance problems, lint errors, missing tests, etc.) that already exist on `main` are **out of scope** and must NOT be reported. The purpose of this check is to evaluate whether *this branch* is safe to merge — not to audit the entire codebase. When in doubt, check if the issue exists on `main` first; if it does, skip it.
 
+## Prerequisites
+
+Before doing anything else, check that `gh` (GitHub CLI) is installed and authenticated:
+1. Run `which gh` — if not found, tell the user to install it first: `brew install gh` (macOS) or see https://cli.github.com. Stop here.
+2. Run `gh auth status` — if not authenticated, tell the user to run `gh auth login` first. Stop here.
+
 ## Instructions
 
 ### Step 1: Detect repos

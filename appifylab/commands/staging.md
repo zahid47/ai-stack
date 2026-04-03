@@ -28,6 +28,12 @@ $ARGUMENTS — optional school_id number (defaults to 273)
 | 5737 | Sabbir Bhai |
 | 5922 | Labib Vai |
 
+## Prerequisites
+
+Before doing anything else, check that `gh` (GitHub CLI) is installed and authenticated:
+1. Run `which gh` — if not found, tell the user to install it first: `brew install gh` (macOS) or see https://cli.github.com. Stop here.
+2. Run `gh auth status` — if not authenticated, tell the user to run `gh auth login` first. Stop here.
+
 ## Instructions
 
 1. Parse the school_id from "$ARGUMENTS".
