@@ -45,9 +45,14 @@ Before doing anything else, check that `gh` (GitHub CLI) is installed and authen
    - If empty or blank, **show the user the table above** and ask them to pick a school_id (mention 273 is the default, so they can just say "y" or press enter for 273).
    - If the school_id is **not in the table above**, show the user the table and ask them to pick a valid one.
    - Do NOT proceed until you have a valid school_id.
-2. Both repos live under: `/Users/zahid47/Developer/Appifylab/EzyCourse Main/`
+2. Locate both repos:
    - Backend: `ezycourse-api`
    - Frontend: `courseporium-next`
+
+   Detection logic (in order):
+   - If the current working directory contains both `ezycourse-api/` and `courseporium-next/` as subdirectories, use those.
+   - Otherwise, if the current working directory **is** one of those repos (check with `basename "$PWD"`), go up one level (`..`) and check for the sibling repo there.
+   - Otherwise, ask the user for the parent directory path that contains both repos, then stop and wait for their answer before proceeding.
 3. Get the current git branch from **ezycourse-api** and **courseporium-next**.
 4. Check for issues:
    - If **either repo is on `main`**: ask the user if they want to create a new branch. If yes, ask for a branch name, then create and checkout that branch in **both** repos.

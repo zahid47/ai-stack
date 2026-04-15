@@ -9,10 +9,15 @@ Merge current branch into `builder-test` in all 3 repos to trigger a builder sta
 
 ## Instructions
 
-All 3 repos live under: `/Users/zahid47/Developer/Appifylab/EzyCourse Main/`
+The 3 repos involved:
 - `ezycourse-api`
 - `courseporium-next`
 - `ezy-web`
+
+**Locate them:**
+- If the current working directory contains all 3 as subdirectories, use those.
+- Otherwise, if the current working directory **is** one of those repos (check with `basename "$PWD"`), go up one level (`..`) and look for the siblings there.
+- Otherwise, ask the user for the parent directory path that contains all 3 repos, then stop and wait for their answer before proceeding.
 
 ### 1. Determine the feature branch
 
