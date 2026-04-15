@@ -1,3 +1,8 @@
+---
+name: staging
+description: Deploy to staging by creating PRs in both ezycourse-api and courseporium-next with staging labels. Use when the user wants to deploy a feature branch to a staging environment for testing. Supports multiple staging schools.
+---
+
 # Deploy to Staging
 
 Create PRs in both ezycourse-api and courseporium-next with staging labels.

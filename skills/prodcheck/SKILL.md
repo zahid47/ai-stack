@@ -1,3 +1,8 @@
+---
+name: prodcheck
+description: Pre-review production readiness check. Use when the user wants to run a comprehensive check before submitting a PR — covers code review, performance, security, code quality, leftovers, lint, tests, env config, and broken references. Runs 9 checks in parallel via subagents.
+---
+
 # Pre-Review Check
 
 Run a comprehensive production-readiness check before submitting a PR for senior review. Supports single or multi-repo projects.

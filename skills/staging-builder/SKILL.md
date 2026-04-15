@@ -1,3 +1,8 @@
+---
+name: staging-builder
+description: Deploy to builder staging by merging the current branch into builder-test across all 3 repos (ezycourse-api, courseporium-next, ezy-web). Use when the user wants to trigger a builder staging build for testing.
+---
+
 # Deploy to Builder Staging
 
 Merge current branch into `builder-test` in all 3 repos to trigger a builder staging build.

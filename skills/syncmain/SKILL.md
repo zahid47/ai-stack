@@ -1,3 +1,8 @@
+---
+name: syncmain
+description: Sync the current git branch with the latest main branch. Use when the user wants to pull latest main into their feature branch, rebase on main, or keep their branch up to date. Handles merge conflicts gracefully.
+---
+
 # Sync Main
 
 Sync the current branch with main. Skip if already on main.
